@@ -1,4 +1,4 @@
-from sda_ex_oop_1_mz.cat import Cat
+from sda_ex_oop_1_mz.ex1_10.cat import Cat
 
 
 def cat_creator() -> list:
@@ -17,7 +17,5 @@ def main():
     for cat in cats:
         print(cat.make_sound())
         cat.eat_mouse()
-
-
 if __name__ == "__main__":
     main()
