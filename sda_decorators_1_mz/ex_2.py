@@ -17,11 +17,16 @@ def check_file_wrapper(func):
             import sys
             sys.exit(1)
         return func(*args, **kwargs)
+
     return inner
+
+
 @check_file_wrapper
 def writing_file(source: str):
     with open(source, 'r') as fd:
         fd.read()
+
+
 def catch_io_error(func):
     def inner(*args, **kwargs):
         try:
@@ -29,7 +34,10 @@ def catch_io_error(func):
         except IOError as exe:
             print(f'IOError catched, more info {exe.args}')
         return None
+
     return inner
+
+
 def catch_io_error_with_library(func):
     from functools import wraps
     @wraps(func)
@@ -39,17 +47,26 @@ def catch_io_error_with_library(func):
         except IOError as exe:
             print(f'IOError catched, more info {exe.args}')
         return None
+
     return inner
+
+
 @catch_io_error_with_library
 def read_no_existing_file():
     source = 'No existing file'
     with open(source, 'r') as fd:
         fd.read()
+
+
 @catch_io_error
 def throw_exception_file():
     raise IOError('test error')
+
+
 def main():
     # writing_file(source='./test')
     throw_exception_file()
     read_no_existing_file()
+
+
 main()
