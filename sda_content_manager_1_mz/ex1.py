@@ -36,7 +36,7 @@ def main():
     #     print(f" IOError found -more {e.args}")
 
     try:
-        with OpenFileManager(path='./test_writtingfle') as fd:
+        with OpenFileManager(path='./test_writingfile') as fd:
             fd.write('ala ma kota')
             print('Zaraz konczy sie with')
     except IOError as e:
